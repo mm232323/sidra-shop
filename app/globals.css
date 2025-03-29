@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF2E0;
+  --foreground: #231104;
+}
+
+
+body {
+  background: var(--background) !important;
+  color: var(--foreground);
+  overflow-x:hidden;
+}
