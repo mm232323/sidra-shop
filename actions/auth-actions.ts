@@ -16,7 +16,7 @@ export async function signup(state: unknown, event: FormData) {
     if (data.name.length < 3) {
         errors.push("name");
     }
-    if (data.phone.length !== 11) {
+    if (data.phone.length !== 11 || Number.isNaN( data.phone)) {
         errors.push("phone");
     }
     if (data.password.length < 8 || data.password.length > 16) {

@@ -1,12 +1,11 @@
 import { ProductType, userData } from "@/util/types";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { RiHeart2Line, RiHeart2Fill } from "react-icons/ri";
 import { RiShoppingCart2Line, RiShoppingCartFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { SendToCart, SendToFav } from "@/util/user-apis";
+import { SendToCart } from "@/util/user-apis";
 import { GetUser } from "@/util/auth-apis";
 const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
   const { data: session } = useSession();
@@ -22,11 +21,9 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
     getUser();
   }, [ses]);
   const [toggleCart, setToggleCart] = useState(false);
-  const [toggleFav, setToggleFav] = useState(false);
   useEffect(() => {
     if (user) {
       setToggleCart(user.cart.filter(prod => prod.includes(product._id)).length > 0);
-      setToggleFav(user.fav.filter(prod => prod.includes(product._id)).length > 0);
     }
   }, [product._id, user]);
   const HandleCart = () => {
@@ -48,14 +45,6 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
       );
     }
     setToggleCart((prevToggle) => !prevToggle);
-  };
-  const HandleFav = () => {
-    SendToFav(
-      !toggleFav,
-      product._id.toString(),
-      (user as unknown as userData).phone as string
-    );
-    setToggleFav((prevToggle) => !prevToggle);
   };
   return (
     <motion.div
@@ -116,21 +105,6 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
               color="white"
               cursor="pointer"
               onClick={HandleCart}
-            />
-          )}
-          {toggleFav ? (
-            <RiHeart2Fill
-              size={27}
-              color="white"
-              cursor="pointer"
-              onClick={HandleFav}
-            />
-          ) : (
-            <RiHeart2Line
-              size={27}
-              color="white"
-              cursor="pointer"
-              onClick={HandleFav}
             />
           )}
         </div>

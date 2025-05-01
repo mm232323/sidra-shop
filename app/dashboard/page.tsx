@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
-import { MdFavorite, MdShoppingCartCheckout } from "react-icons/md";
+import { MdMessage, MdShoppingCartCheckout } from "react-icons/md";
 const Dashboard: React.FC = async () => {
   const session = await getServerSession();
   if (!session) redirect("/login");
@@ -62,16 +62,6 @@ const Dashboard: React.FC = async () => {
             </div>
           </Flex>
         </Flex>
-        <div className="w-full h-1/2 rounded-[33px] border-[rgba(35,17,4,37%)] border-1 bg-[#eccaffaf] flex flex-col gap-[10px] items-center">
-          <h1 className="text-[36px] text-[#231104] pt-[20px]">تقيماتك</h1>
-          <Flex gap="lg">
-            {data.reviews?.length == 0 ? (
-              <p className="opacity-65">لا توجد تعليقات لك</p>
-            ) : (
-              <p></p>
-            )}
-          </Flex>
-        </div>
       </div>
       <Flex gap="md" className="w-full">
         <Link href="/fav" className="w-full relative">
@@ -80,7 +70,7 @@ const Dashboard: React.FC = async () => {
             dir="rtl"
             color="#9A1414"
           >
-            اذهب إلي المفضل <MdFavorite size={20} />
+            اذهب إلي الرسائل <MdMessage size={20} />
           </button>
         </Link>
         <Link href="/cart" className="w-full relative">

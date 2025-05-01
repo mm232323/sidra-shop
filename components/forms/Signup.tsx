@@ -1,6 +1,6 @@
 "use client";
 import { signup } from "@/actions/auth-actions";
-import { Flex, NumberInput, PasswordInput, TextInput } from "@mantine/core";
+import { Flex, PasswordInput, TextInput } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 
@@ -21,7 +21,7 @@ const Signup: React.FC = () => {
           radius="md"
           placeholder="الإسم الثلاثي"
         />
-        <NumberInput
+        <TextInput
           error={
             (state as string[])?.includes("phone")
               ? "تأكد من ادخال رقم الهاتف بشكل صحيح"
@@ -34,6 +34,8 @@ const Signup: React.FC = () => {
           radius="md"
           placeholder="رقم الهاتف"
           defaultValue={0}
+          maxLength={11}
+          minLength={11}
         />
         <PasswordInput
           error={

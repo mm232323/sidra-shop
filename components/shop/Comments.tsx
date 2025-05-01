@@ -101,7 +101,7 @@ const Comments: React.FC<{
           اترك تعليقاً
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-[20px] mt-[70px] w-[90%] left-1/2 relative translate-x-[-50%]">
+      <div className="grid grid-cols-2 gap-[20px] mt-[70px] w-[90%] left-1/2 relative translate-x-[-50%]" dir='rtl'>
         {comments.map((comment,idx) => <CommentContainer key={idx} comment={comment} />)}
       </div>
     </>

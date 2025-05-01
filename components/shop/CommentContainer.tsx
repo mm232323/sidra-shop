@@ -10,7 +10,7 @@ const CommentContainer: React.FC<{ comment: CommentType }> = ({ comment }) => {
         className="w-full px-[8px] flex items-start justify-between"
         dir="rtl"
       >
-        <h1>{comment.username}</h1>
+        <h1>{comment.username.slice(0,20)}</h1>
         <div className="flex flex-col items-center gap-[6px]">
           <Rating defaultValue={comment.rating} readOnly size="sm" />
           <p className="text-[13px] opacity-60">{comment.date}</p>

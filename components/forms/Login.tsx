@@ -1,6 +1,6 @@
 "use client";
 import { login } from "@/actions/auth-actions";
-import { Flex, NumberInput, PasswordInput } from "@mantine/core";
+import { Flex, PasswordInput, TextInput } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 import { signIn } from "next-auth/react"
@@ -26,7 +26,7 @@ const Login: React.FC = () => {
         أفضل العروض على منتجات الأعسال الطبيعية!
       </p>
       <form className="flex flex-col gap-4 justify-center" action={action}>
-        <NumberInput
+        <TextInput
           error={(state as string[])?.includes("phone")}
           name="phone"
           size="lg"

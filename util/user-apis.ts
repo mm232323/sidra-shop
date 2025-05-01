@@ -16,19 +16,6 @@ export const SendToCart = async (state: boolean, productId: string, userNumber: 
     const data = await res.json()
     return data
 }
-
-export const SendToFav = async (state: boolean, productId: string, userNumber: string) => {
-    const res = await fetch(`${process.env.SERVER_HOST}/user/handle-fav`, {
-        method: 'POST',
-        body: JSON.stringify({ state, productId, userNumber }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    const data = await res.json()
-    console.log(data)
-}
-
 export const PostQuantity = async (props: unknown) => {
     const res = await fetch(`${process.env.SERVER_HOST}/user/handle-quant`, {
         method: 'POST',
