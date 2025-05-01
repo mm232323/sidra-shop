@@ -64,7 +64,6 @@ const MessagesPage: React.FC = async () => {
               color={selectedColor}
               icon={selectedIcon}
               title={message.title}
-              withCloseButton
               dir="rtl"
               variant="outline"
               className="w-full"
