@@ -75,3 +75,9 @@ export const SetBlogComment = async (blogId:string,comment:string,phone:string) 
     const message = await res.json()
     console.log(message)
 }
+
+export const getMessages = async (phone:string) => {
+    const res = await fetch(`${process.env.SERVER_HOST}/user/get-messages/${phone}`)
+    const {messages} = await res.json()
+    return messages
+}
