@@ -64,7 +64,7 @@ const Dashboard: React.FC = async () => {
         </Flex>
       </div>
       <Flex gap="md" className="w-full">
-        <Link href="/fav" className="w-full relative">
+        <Link href="/messages" className="w-full relative">
           <button
             className="w-full flex gap-[10px] rounded-full justify-center items-center h-[76px] relative bg-[#9a1414] text-white cursor-pointer hover:bg-[#9a1414be] duration-300"
             dir="rtl"
