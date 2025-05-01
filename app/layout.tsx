@@ -19,7 +19,10 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import Footer from "@/components/layout/Footer";
-import Providers from "@/Providers";
+import Providers from "@/app/Providers";
+import Header from "@/components/layout/Header";
+import { getServerSession } from "next-auth";
+import { GetUser } from "@/util/auth-apis";
 
 const myColor: MantineColorsTuple = [
   "#fff6e1",
@@ -39,16 +42,25 @@ const theme = createTheme({
     myColor,
   },
 });
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+  let user;
+  if (session?.user) {
+    user = await GetUser(session.user?.email as string,true)
+  }
   return (
     <html lang="en" {...mantineHtmlProps}>
       <body className={`${baloo.className} antialiased`}>
         <Providers>
           <MantineProvider theme={theme}>
+            <Header
+              isAuthenticated={session ? true : false}
+              user={user}
+            />
             {children}
             <Footer />
             <CanvasCursor />

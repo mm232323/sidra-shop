@@ -1,12 +1,12 @@
 import Feature from "@/components/home/Feature";
 import InternalLink from "@/components/home/InternalLink";
 import IntroManager from "@/components/home/IntroManager";
-import Header from "@/components/layout/Header";
+// import Header from "@/components/layout/Header";
 import { Grid } from "@mantine/core";
 export default function Home() {
   return (
     <main className="text-[#231104] selection:text-white selection:bg-amber-800">
-      <Header theme="dark" isAuthenticated={true} />
+      {/* <Header theme="dark" isAuthenticated={true} /> */}
       <IntroManager />
       <Grid
         className="relative w-9/12 left-1/2 translate-x-[-50%] grid gap-3"

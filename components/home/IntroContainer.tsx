@@ -11,7 +11,7 @@ const IntroContainer: React.FC<{
   imgUrl: string;
   id: number;
   HandleSelect: (id: number) => void;
-}> = ({ title, children, backgroundUrl, imgUrl, id, HandleSelect }) => {
+}> = ({ title, children, backgroundUrl, id, HandleSelect }) => {
   return (
     <motion.div
       className=" h-[802px] text-white flex  items-center w-full absolute top-0"
@@ -28,7 +28,7 @@ const IntroContainer: React.FC<{
         alt="Background Img"
         width={1441}
         height={802}
-        className="absolute z-[-100] top-0 h-[747px] w-[1441px] max-w-[1441px] right-[-20px] "
+        className="absolute z-[-100] top-0 h-[747px] w-[1445px] max-w-[1445px] right-[-20px] "
       />
       <Flex align="center" justify="space-around" className="gap-[200px]">
         {/* <Image
