@@ -3,7 +3,6 @@ import { Rating } from "@mantine/core";
 import React from "react";
 
 const CommentContainer: React.FC<{ comment: CommentType }> = ({ comment }) => {
-  console.log(comment);
   return (
     <div className="relative w-full h-fit p-[25px] bg-white rounded-[11px] comment-shadow border-[.5px] border-[#231104ab]">
       <div

@@ -17,7 +17,6 @@ const authOptions = {
           if (res.status == 404) return null;
           const user = res.res.user
           user.email = user.phone
-          console.log(user)
           return user
         } catch (error) {
           console.log(error);

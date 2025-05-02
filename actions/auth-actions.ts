@@ -11,12 +11,11 @@ export async function signup(state: unknown, event: FormData) {
             ["name", "phone", "password"].includes(key)
         )
     ) as unknown as SignupFormData;
-    console.log(data);
     const errors = [];
     if (data.name.length < 3) {
         errors.push("name");
     }
-    if (data.phone.length !== 11 || Number.isNaN( data.phone)) {
+    if (data.phone.length !== 11 || Number.isNaN((+data.phone))) {
         errors.push("phone");
     }
     if (data.password.length < 8 || data.password.length > 16) {
@@ -26,8 +25,7 @@ export async function signup(state: unknown, event: FormData) {
 
     const isExit = await CheckExist(data.phone);
     if (isExit) return ["exist"];
-    const result = await SetUser(data);
-    console.log(result);
+    await SetUser(data);
     redirect("/login");
 }
 
@@ -38,7 +36,6 @@ export async function login(state: unknown, event: FormData) {
         )
     ) as unknown as SignupFormData;
     const user = await GetUser(data.phone, false, data.password);
-    console.log(user);
     if (user.status == 404) return ["phone", "password"];
     return ["done", data];
 }
@@ -46,16 +43,15 @@ export async function login(state: unknown, event: FormData) {
 export async function update(state: unknown, event: FormData) {
     const session = await getServerSession()!
     const user = await GetUser(session?.user?.email as string, true)
-    console.log(user)
     const data = Object.fromEntries(
         Array.from(event.entries()).filter(([key]) =>
             ["phone", "name", "address"].includes(key)
         )
     ) as unknown as updateFormData;
     const errors = []
-    if (data.phone.length < 11 || Number.isNaN(data.phone)) errors.push('phone')
+    if (data.phone.length < 11 || Number.isNaN((+data.phone))) errors.push('phone')
     if (data.name.length < 3) errors.push('name')
     if (errors.length > 0) return errors
-    const updateRes = await UpdateUser(user.userId, data.name, data.phone, data.address)
-    console.log(updateRes)
+    await UpdateUser(user.userId, data.name, data.phone, data.address)
+    return ['done']
 }

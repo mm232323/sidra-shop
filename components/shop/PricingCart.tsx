@@ -61,8 +61,7 @@ const PricingCart: React.FC<{
       quant: prodCount,
       phone: userNumber,
     };
-    const res = PostQuantity(data);
-    console.log(res);
+    PostQuantity(data);
     if (state == "inc") {
       setProdCount((prevCount) => prevCount + 1);
     } else {

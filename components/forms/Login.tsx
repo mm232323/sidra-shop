@@ -15,7 +15,6 @@ const Login: React.FC = () => {
       password: data.password,
       redirect: false,
     });
-    console.log("done");
     redirect("/dashboard");
   }
   return (

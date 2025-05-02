@@ -38,7 +38,6 @@ const MessagesPage: React.FC = async () => {
         ) => {
           let selectedColor = "";
           let selectedIcon: ReactNode;
-          console.log(message.type);
           switch (message.type) {
             case "good":
               selectedColor = "green";

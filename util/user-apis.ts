@@ -25,7 +25,7 @@ export const PostQuantity = async (props: unknown) => {
         }
     })
     const message = await res.json()
-    console.log(message)
+    return message
 }
 
 export const SubmitOrder = async (phone: string) => {
@@ -37,7 +37,7 @@ export const SubmitOrder = async (phone: string) => {
         }
     })
     const message = await res.json()
-    console.log(message)
+    return message
 }
 
 export const SendComment = async (prodId: string, comment: CommentType) => {
@@ -49,7 +49,7 @@ export const SendComment = async (prodId: string, comment: CommentType) => {
         }
     })
     const message = await res.json()
-    console.log(message)
+    return message
 }
 
 export const SendReaction = async (blogId:string,phone:string,isIncluded:boolean) => {
@@ -61,7 +61,7 @@ export const SendReaction = async (blogId:string,phone:string,isIncluded:boolean
         }
     })
     const message = await res.json()
-    console.log(message)
+    return message
 }
 
 export const SetBlogComment = async (blogId:string,comment:string,phone:string) => {
@@ -73,7 +73,7 @@ export const SetBlogComment = async (blogId:string,comment:string,phone:string) 
         }
     })
     const message = await res.json()
-    console.log(message)
+    return message
 }
 
 export const getMessages = async (phone:string) => {
