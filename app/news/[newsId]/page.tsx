@@ -29,7 +29,7 @@ export default async function BlogPage({params}) {
           className="min-h-full min-w-[1330px] absolute z-[-200]"
         />
         <Image
-          src={`${blog.imgUrl}?pinataGatewayToken=${process.env.Pinate_GATEWAY_Token}`}
+          src={blog.imgUrl}
           alt="Blog Image"
           width={1330}
           height={707}

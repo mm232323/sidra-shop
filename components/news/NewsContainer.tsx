@@ -14,7 +14,7 @@ const NewsContainer: React.FC<{ news: NewsType }> = ({ news }) => {
     <div className="flex items-center justify-between w-full h-fit bg-white border-[.6px] border-[#231104] rounded-[10px] pr-[20px] overflow-hidden relative news-shadow">
       <div className="w-1/2 h-full rounded-bl-[10px] rounded-tl-[10px] overflow-x-hidden flex justify-center items-center news-img-shadow">
         <Image
-          src={`${news.imgUrl}?pinataGatewayToken=${process.env.Pinate_GATEWAY_Token}`}
+          src={news.imgUrl}
           alt="News Image"
           width={700}
           height={700}
