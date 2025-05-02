@@ -45,7 +45,7 @@ export default function Home() {
           size={3}
         />
       </Grid>
-      <div className="relative flex w-full h-fit p-[30px] bg-[#ffa01c23] gap-[20px] z-[-3] text-white mt-[80px] max-[760px]:flex-col">
+      <div className="relative flex w-full h-fit p-[30px] bg-[#ffa01c23] gap-[20px] text-white mt-[80px] max-[760px]:flex-col">
         <InternalLink desc="في هذه الصفحه نعرض لكم عروضنا منشورتنا الجديد علي وسائل التوصل" imgUrl='/home/newsImg.png' href='/news' linkText='ما الجديد' >المنشورات</InternalLink>
         <InternalLink desc="في هذه الصفحه تعرض لكم منتجاتنا وعروضنا المتوفرة  معي اعلي الخصومات" imgUrl='/home/shopImg.png' href='/shop' linkText='تصفح الان' >المنتجات</InternalLink>
       </div>
