@@ -16,6 +16,7 @@ export default async function ProductPage({params}) {
     user = (await GetUser(session?.user?.email as string, true)) as userData;
   }
   const imgUrl = product.imgUrl.replace("cut", "").replace("png", "jpg");
+  console.log(product)
   return (
     <main className="">
       <div className="w-full relative flex items-center justify-center gap-[90px] mt-[60px]">
@@ -83,7 +84,7 @@ export default async function ProductPage({params}) {
       <Comments
         prodComments={product.comments}
         prodId={params.prodId}
-        username={user!.name}
+        username={user.name}
       />
     </main>
   );

@@ -8,8 +8,6 @@ export interface userData extends SignupFormData {
     userId: string,
     cart: string[],
     messages: string[],
-    reviews: string[],
-    fav: string[],
     address: string,
 }
 export interface updateFormData {
