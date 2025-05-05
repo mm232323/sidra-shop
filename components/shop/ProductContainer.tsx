@@ -7,7 +7,9 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { SendToCart } from "@/util/user-apis";
 import { GetUser } from "@/util/auth-apis";
+import { useAppContext } from "@/app/context";
 const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
+  const {handleCart} = useAppContext()
   const { data: session } = useSession();
   const [user, setUser] = useState<null | userData>(null);
   const ses = session?.user;
@@ -35,9 +37,11 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
       const weight = selectProd.split("&")[1].split("=")[1]
       const quant = selectProd.split("&")[2].split("=")[1]
       const weightIdx = product.weight.indexOf(weight)
+      handleCart('dec',+quant)
         SendToCart(false,product._id,(user as unknown as userData).phone as string,weightIdx,+quant)
     }
     else {
+      handleCart('inc')
       SendToCart(
         true,
         product._id.toString(),

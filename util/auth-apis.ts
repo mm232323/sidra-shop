@@ -16,7 +16,7 @@ export async function CheckExist(phone: string) {
 
 export async function SetUser(user: SignupFormData) {
     const userId = (await bcrypt.hash(user.phone, 10)).replace('/','').replace('.','')
-    const data = { userId, ...user, email: '', cart: [], fav: [], messages: [], reviews: [], address: '' }
+    const data = { userId, ...user, cart: [], messages: [], address: '' }
     const result = await fetch(`${process.env.SERVER_HOST}/auth/set-user`, {
         method: 'POST',
         body: JSON.stringify(data),

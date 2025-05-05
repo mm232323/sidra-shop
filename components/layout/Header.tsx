@@ -9,10 +9,11 @@ import AuthActionLinks from "./AuthActionLinks";
 import { usePathname } from "next/navigation";
 import { userData } from "@/util/types";
 import { BiMessageSquareDots } from "react-icons/bi";
-const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
-  isAuthenticated,
+import { useAppContext } from "@/app/context";
+const Header: React.FC<{user?:userData }> = ({
   user
 }) => {
+  const {isAuthed, cart, messages } = useAppContext()
   const path = usePathname();
   const theme = ["/", "/login", "/signup"].includes(path) ? "dark" : "light";
   const [navBar, setNavBar] = useState(false);
@@ -62,10 +63,10 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
                         المنشورات
                       </h1>
                     </Link>
-                    <Link href={isAuthenticated ? "/dashboard" : "/login"}>
+                    <Link href={isAuthed ? "/dashboard" : "/login"}>
                       <h1
                         className={`${titleStyles} w-full h-fit p-[10px] duration-300 rounded-[6px] ${
-                          !isAuthenticated
+                          !isAuthed
                             ? "opacity-50 cursor-default"
                             : "cursor-pointer hover:bg-black/10"
                         }`}
@@ -73,10 +74,10 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
                         المستخدم
                       </h1>
                     </Link>
-                    <Link href={isAuthenticated ? "/messages" : "/login"}>
+                    <Link href={isAuthed ? "/messages" : "/login"}>
                       <h1
                         className={`${titleStyles} w-full h-fit p-[10px] duration-300 rounded-[6px] ${
-                          !isAuthenticated
+                          !isAuthed
                             ? "opacity-50 cursor-default"
                             : "cursor-pointer hover:bg-black/10"
                         }`}
@@ -85,7 +86,7 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
                       </h1>
                     </Link>
                     <AuthActionLinks
-                      isAuthenticated={isAuthenticated}
+                      isAuthenticated={isAuthed as boolean}
                       theme={theme}
                       device="mobile"
                     />
@@ -95,23 +96,23 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
             )}
           </AnimatePresence>
           <AuthActionLinks
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={isAuthed}
             theme={theme}
             device="computer"
           />
-          <Link href={isAuthenticated ?"/cart": '/login'}>
-          <Tooltip label={user ? `${user?.cart.length} منتج` : ''}>
+          <Link href={isAuthed ?"/cart": '/login'}>
+          <Tooltip label={user ? `${cart} منتج` : ''}>
             <CiShoppingCart
               size={23}
-              className={!isAuthenticated ? "opacity-60" : ""}
+              className={!isAuthed ? "opacity-60" : ""}
             />
           </Tooltip>
           </Link>
-          <Link href={isAuthenticated ?"/messages": '/login'}>
-          <Tooltip label={user ? `${user?.messages.length} رساله` : ''}>
+          <Link href={isAuthed ?"/messages": '/login'}>
+          <Tooltip label={user ? `${messages} رساله` : ''}>
             <BiMessageSquareDots
               size={23}
-              className={!isAuthenticated ? "opacity-60" : ""}
+              className={!isAuthed ? "opacity-60" : ""}
             />
           </Tooltip>
           </Link>
@@ -140,10 +141,10 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
               المنشورات
             </h1>
           </Link>
-          <Link href={isAuthenticated ? "/dashboard" : "/login"}>
+          <Link href={isAuthed ? "/dashboard" : "/login"}>
             <h1
               className={`${titleStyles} ${
-                !isAuthenticated
+                !isAuthed
                   ? "opacity-50 cursor-default"
                   : "cursor-pointer"
               }`}
@@ -151,10 +152,10 @@ const Header: React.FC<{ isAuthenticated: boolean,user?:userData }> = ({
               المستخدم
             </h1>
           </Link>
-          <Link href={isAuthenticated ? "/messages" : "/login"}>
+          <Link href={isAuthed ? "/messages" : "/login"}>
             <h1
               className={`${titleStyles} ${
-                !isAuthenticated
+                !isAuthed
                   ? "opacity-50 cursor-default"
                   : "cursor-pointer"
               }`}

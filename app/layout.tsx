@@ -19,10 +19,11 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import Footer from "@/components/layout/Footer";
-import Providers from "@/app/Providers";
 import Header from "@/components/layout/Header";
 import { getServerSession } from "next-auth";
 import { GetUser } from "@/util/auth-apis";
+import SessionProviders from "@/app/SessionProvider";
+import { AppProvider } from "./context";
 
 const myColor: MantineColorsTuple = [
   "#fff6e1",
@@ -50,22 +51,21 @@ export default async function RootLayout({
   const session = await getServerSession();
   let user;
   if (session?.user) {
-    user = await GetUser(session.user?.email as string,true)
+    user = await GetUser(session.user?.email as string, true);
   }
   return (
     <html lang="en" {...mantineHtmlProps}>
       <body className={`${baloo.className} antialiased`}>
-        <Providers>
-          <MantineProvider theme={theme}>
-            <Header
-              isAuthenticated={session ? true : false}
-              user={user}
-            />
-            {children}
-            <Footer />
-            <CanvasCursor />
-          </MantineProvider>
-        </Providers>
+        <SessionProviders>
+          <AppProvider>
+            <MantineProvider theme={theme}>
+              <Header user={user} />
+              {children}
+              <Footer />
+              <CanvasCursor />
+            </MantineProvider>
+          </AppProvider>
+        </SessionProviders>
       </body>
     </html>
   );

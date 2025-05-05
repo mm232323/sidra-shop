@@ -6,12 +6,14 @@ import React, { useEffect, useState } from "react";
 import { TbShoppingCartPlus, TbShoppingCartMinus } from "react-icons/tb";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAppContext } from "@/app/context";
 const PricingCart: React.FC<{
   product: ProductType;
   cart: string[];
   isAuthed: boolean;
   userNumber: string;
 }> = ({ product, cart, userNumber, isAuthed }) => {
+  const {handleCart} = useAppContext()
   const [selectedWeight, setSelectedWeight] = useState<0 | 1 | 2>(0);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [prodCount, setProdCount] = useState(1);
@@ -44,10 +46,12 @@ const PricingCart: React.FC<{
         prod.includes(`${product._id}&w=${product.weight[selectedWeight]}`)
       ).length == 0
     ) {
+      handleCart('inc')
       setProdCount(1)
       SendToCart(true, product._id, userNumber, selectedWeight);
       setIsAddedToCart(true);
     } else {
+      handleCart('dec',prodCount)
       SendToCart(false, product._id, userNumber, selectedWeight,prodCount);
       setIsAddedToCart(false);
     }
@@ -61,6 +65,7 @@ const PricingCart: React.FC<{
       quant: prodCount,
       phone: userNumber,
     };
+    handleCart(state)
     PostQuantity(data);
     if (state == "inc") {
       setProdCount((prevCount) => prevCount + 1);

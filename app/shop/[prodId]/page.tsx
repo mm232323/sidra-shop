@@ -1,6 +1,6 @@
 import Comments from "@/components/shop/Comments";
 import PricingCart from "@/components/shop/PricingCart";
-import { GetProduct } from "@/util/admin-apis";
+import { GetProducts } from "@/util/admin-apis";
 import { GetUser } from "@/util/auth-apis";
 import { ProductType, userData } from "@/util/types";
 import { getServerSession } from "next-auth";
@@ -9,14 +9,15 @@ import React from "react";
 
 
 export default async function ProductPage({params}) {
-  const product: ProductType = await GetProduct(params.prodId);
+  const products: ProductType[] = await GetProducts();
+  const product = products.find(prod => prod._id == params.prodId)
+  console.log(product)
   const session = await getServerSession();
   let user = null;
   if (session?.user) {
     user = (await GetUser(session?.user?.email as string, true)) as userData;
   }
   const imgUrl = product.imgUrl.replace("cut", "").replace("png", "jpg");
-  console.log(product)
   return (
     <main className="">
       <div className="w-full relative flex items-center justify-center gap-[90px] mt-[60px]">

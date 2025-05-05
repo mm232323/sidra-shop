@@ -5,12 +5,15 @@ import { Button, Modal, Rating } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React, { useState } from "react";
 import CommentContainer from "./CommentContainer";
+import { useAppContext } from "@/app/context";
+import { redirect } from "next/navigation";
 
 const Comments: React.FC<{
   prodComments: CommentType[];
   username: string;
   prodId: string;
 }> = ({ prodComments, username, prodId }) => {
+  const {isAuthed} = useAppContext()
   const [comment, setComment] = useState<CommentType>({
     title: "",
     comment: "",
@@ -96,7 +99,7 @@ const Comments: React.FC<{
         </div>
         <button
           className="bg-[#ffa01c3a] w-[223px] h-[64px] rounded-[8px] text-[#a26b23d3] cursor-pointer duration-300 hover:bg-[#ffa01c83] relative right-[50px] top-[20px]"
-          onClick={open}
+          onClick={isAuthed ? open : redirect('/login')}
         >
           اترك تعليقاً
         </button>
