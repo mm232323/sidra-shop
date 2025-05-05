@@ -15,7 +15,9 @@ const Login: React.FC = () => {
       password: data.password,
       redirect: false,
     });
-    redirect("/dashboard");
+    setTimeout(() => {
+      redirect("/dashboard");
+    },1000)
   }
   return (
     <Flex dir="rtl" direction="column" gap="md" className="w-[550px] ml-[25px]">
