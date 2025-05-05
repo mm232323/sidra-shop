@@ -99,7 +99,7 @@ const Comments: React.FC<{
         </div>
         <button
           className="bg-[#ffa01c3a] w-[223px] h-[64px] rounded-[8px] text-[#a26b23d3] cursor-pointer duration-300 hover:bg-[#ffa01c83] relative right-[50px] top-[20px]"
-          onClick={isAuthed ? open : redirect('/login')}
+          onClick={isAuthed ? open : () => redirect('/login')}
         >
           اترك تعليقاً
         </button>

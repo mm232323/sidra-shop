@@ -85,7 +85,7 @@ export default async function ProductPage({params}) {
       <Comments
         prodComments={product.comments}
         prodId={params.prodId}
-        username={user.name}
+        username={user?.name}
       />
     </main>
   );
