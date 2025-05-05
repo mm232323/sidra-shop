@@ -48,17 +48,6 @@ const Dashboard: React.FC = async () => {
                   {data.cart?.length} منتج
                 </p>
               </div>
-              <div
-                className="flex items-center justify-around w-full"
-                dir="rtl"
-              >
-                <h1 className="text-[36px] text-[#231104] self-end">
-                  المنتجات المفضله
-                </h1>
-                <p className="opacity-80 text-[#231104]">
-                  {data.fav?.length} منتج
-                </p>
-              </div>
             </div>
           </Flex>
         </Flex>
