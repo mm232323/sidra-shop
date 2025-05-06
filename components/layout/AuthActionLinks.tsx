@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { Button } from "@mantine/core";
 import { CiUser } from "react-icons/ci";
@@ -11,9 +11,9 @@ const AuthActionLinks: React.FC<{
   device: string;
 }> = ({ isAuthenticated, theme, device }) => {
   const logout = () => {
-    signOut({redirect:false})
-    redirect('/signup')
-  }
+    signOut({ redirect: false });
+    redirect("/signup");
+  };
   return (
     <div
       className={
@@ -37,7 +37,11 @@ const AuthActionLinks: React.FC<{
           >
             تسجيل خروج
           </Button>
-          {device == "computer" && <CiUser size={23} />}
+          {device == "computer" && (
+            <Link href="/dashboard">
+              <CiUser size={23} />
+            </Link>
+          )}
         </>
       ) : (
         <>

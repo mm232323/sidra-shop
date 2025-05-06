@@ -15,9 +15,9 @@ const EditableInfo: React.FC<{ user: userData }> = ({ user }) => {
   },[state])
  
   return (
-    <div className="w-1/2 h-full border-1 rounded-[33px] border-[rgba(35,17,4,37%)] bg-[#FFE9CA] flex justify-center items-center gap-[15px] flex-col">
+    <div className={`w-1/2 h-full border-1 rounded-[33px] border-[rgba(35,17,4,37%)] bg-[#FFE9CA] flex justify-center ${toggleEdit ? '' : 'items-center'} gap-[15px] flex-col relative max-[670px]:w-19/20 max-[670px]:p-[20px] max-[500px]:w-full max-[500px]:rounded-none`}>
       {toggleEdit ? (
-        <form className="self-end relative left-[-50px]" dir="rtl" action={action}>
+        <form className="self-end relative left-[-50px] w-18/20" dir="rtl" action={action}>
           <h1 className="text-[30px] mb-[10px] mt-[5px]">الأسم</h1>
           <TextInput
             name="name"
@@ -26,6 +26,7 @@ const EditableInfo: React.FC<{ user: userData }> = ({ user }) => {
             radius="lg"
             error={(state as string[])?.includes('name')}
             onChange={(e) => setUserInfo((prevInfo) => {return {...prevInfo,title:e.target.value}})}
+            className="w-7/12 max-[460px]:w-10/12"
           />
           <h1 className="text-[30px] mb-[10px] mt-[5px]">رقم الهاتف</h1>
           <TextInput
@@ -36,6 +37,7 @@ const EditableInfo: React.FC<{ user: userData }> = ({ user }) => {
             radius="lg"
             error={(state as string[])?.includes('phone')}
             onChange={(e) => setUserInfo((prevInfo) => {return {...prevInfo,phone:e.target.value}})}
+            className="w-7/12 max-[460px]:w-10/12"
           />
           <h1 className="text-[30px] mb-[10px] mt-[5px]">العنوان</h1>
           <TextInput
@@ -44,8 +46,9 @@ const EditableInfo: React.FC<{ user: userData }> = ({ user }) => {
             size="md"
             radius="lg"
             onChange={(e) => setUserInfo((prevInfo) => {return {...prevInfo,address:e.target.value}})}
+            className="w-7/12 max-[460px]:w-10/12"
           />
-          <div className="flex gap-[10px] top-0 left-[-250px] absolute">
+          <div className="flex gap-[10px] absolute left-[25px] top-0">
             <Button variant="filled" color="#231104" type="submit">
               حفظ
             </Button>

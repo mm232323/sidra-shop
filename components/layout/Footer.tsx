@@ -3,7 +3,7 @@ import React from "react";
 // import Link from "next/link";
 const Footer: React.FC = () => {
   return (
-    <div className="relative flex items-center justify-around bg-[#ffa01cbd] w-[532px] h-[98px] mt-[50px] rounded-[12px] left-1/2 translate-x-[-50%] mb-[30px] drop-shadow-2xl">
+    <div className="relative flex items-center justify-around bg-[#ffa01cbd] w-18/20 h-[98px] mt-[50px] rounded-[12px] left-1/2 translate-x-[-50%] mb-[30px] drop-shadow-2xl max-[640px]:flex-col max-[640px]:py-[18px]">
       <div className="flex gap-[10px]">
         <Image
           src="/home/facebook.svg"
