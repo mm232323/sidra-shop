@@ -13,11 +13,11 @@ const PricingCart: React.FC<{
   isAuthed: boolean;
   userNumber: string;
 }> = ({ product, cart, userNumber, isAuthed }) => {
-  const {handleCart} = useAppContext()
+  const { handleCart } = useAppContext();
   const [selectedWeight, setSelectedWeight] = useState<0 | 1 | 2>(0);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [prodCount, setProdCount] = useState(1);
-  const [prodCart,setProdCart] = useState(cart)
+  const [prodCart, setProdCart] = useState(cart);
   useEffect(() => {
     setIsAddedToCart(
       isAuthed
@@ -46,13 +46,13 @@ const PricingCart: React.FC<{
         prod.includes(`${product._id}&w=${product.weight[selectedWeight]}`)
       ).length == 0
     ) {
-      handleCart('inc')
-      setProdCount(1)
+      handleCart("inc");
+      setProdCount(1);
       SendToCart(true, product._id, userNumber, selectedWeight);
       setIsAddedToCart(true);
     } else {
-      handleCart('dec',prodCount)
-      SendToCart(false, product._id, userNumber, selectedWeight,prodCount);
+      handleCart("dec", prodCount);
+      SendToCart(false, product._id, userNumber, selectedWeight, prodCount);
       setIsAddedToCart(false);
     }
   };
@@ -65,23 +65,30 @@ const PricingCart: React.FC<{
       quant: prodCount,
       phone: userNumber,
     };
-    handleCart(state)
+    handleCart(state);
     PostQuantity(data);
     if (state == "inc") {
       setProdCount((prevCount) => prevCount + 1);
     } else {
       if (prodCount == 1) {
-        setIsAddedToCart(false)
-        setProdCart(prevCart => [...prevCart.filter(prodId => !prodId.includes(`${product._id}&w=${product.weight[selectedWeight]}`))])
+        setIsAddedToCart(false);
+        setProdCart((prevCart) => [
+          ...prevCart.filter(
+            (prodId) =>
+              !prodId.includes(
+                `${product._id}&w=${product.weight[selectedWeight]}`
+              )
+          ),
+        ]);
       }
       setProdCount((prevCount) => prevCount - 1);
     }
   };
   return (
-    <div className="fit-content">
-      <div className="flex items-center gap-[18px] mt-[35px]">
+    <div className="max-[500px]:w-full max-[500px]:mb-[20px]">
+      <div className="flex items-center gap-[18px] mt-[35px] max-[500px]:flex-col max-[500px]:w-14/20 relative right-1/2 translate-x-[50%]">
         <div
-          className={`duration-300  w-[125px] h-[43px] rounded-[16px] text-[17.5px] flex justify-center items-center cursor-pointer ${
+          className={`duration-300 w-[125px] h-[43px] rounded-[16px] text-[17.5px] flex justify-center items-center cursor-pointer max-[850px]:w-full max-[850px]:p-[26px] ${
             selectedWeight == 0
               ? "bg-[#231104] text-white"
               : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
@@ -92,7 +99,7 @@ const PricingCart: React.FC<{
         </div>
         {product.weight[1] && (
           <div
-            className={` w-[125px] h-[43px] rounded-[16px] duration-300 text-[17.5px] flex justify-center items-center cursor-pointer ${
+            className={` w-[125px] h-[43px] rounded-[16px] duration-300 text-[17.5px] flex justify-center items-center cursor-pointer max-[850px]:w-full max-[850px]:p-[26px] ${
               selectedWeight == 1
                 ? "bg-[#231104] text-white"
                 : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
@@ -104,7 +111,7 @@ const PricingCart: React.FC<{
         )}
         {product.weight[2] && (
           <div
-            className={`w-[125px] h-[43px] duration-300 rounded-[16px] text-[17.5px] flex justify-center items-center cursor-pointer ${
+            className={`w-[125px] h-[43px] duration-300 rounded-[16px] text-[17.5px] flex justify-center items-center cursor-pointer max-[850px]:w-full max-[850px]:p-[26px] ${
               selectedWeight == 2
                 ? "bg-[#231104] text-white"
                 : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
@@ -116,7 +123,7 @@ const PricingCart: React.FC<{
         )}
       </div>
       <div
-        className="w-[447px] h-fit border-[.7px] border-[#231104] rounded-[10px] p-[15px] flex relative justify-between mt-[20px] mb-[20px]"
+        className="w-[447px] h-fit border-[.7px] border-[#231104] rounded-[10px] p-[15px] flex relative justify-between mt-[20px] mb-[20px] max-[500px]:w-14/20 max-[850px]:right-1/2 max-[850px]:translate-x-1/2"
         dir="rtl"
       >
         <h2 className="text-[17.5px]">
@@ -140,7 +147,7 @@ const PricingCart: React.FC<{
             initial="hide"
             animate="show"
             exit="hide"
-            className="w-[280px] h-[72px] flex justify-between items-center relative right-1/2 translate-x-[50%] mb-[20px]"
+            className="w-[280px] h-[72px] relative max-[500px]:right-1/2 max-[500px]:translate-x-[50%] mb-[20px]"
           >
             <button
               className="h-full w-[90px] rounded-[8px] bg-[rgba(162,111,75,.15)] flex justify-center items-center cursor-pointer border-[.3px] border-[#2311043b]"
@@ -162,7 +169,7 @@ const PricingCart: React.FC<{
       </AnimatePresence>
       {isAddedToCart ? (
         <button
-          className="w-[447px] h-[72px] rounded-[10px] bg-[#2311043b] flex gap-[15px] justify-center items-center cursor-pointer duration-300"
+          className="w-[447px] h-[72px] rounded-[10px] bg-[#2311043b] flex gap-[15px] justify-center items-center cursor-pointer duration-300 max-[500px]:w-14/20 relative right-1/2 translate-x-1/2"
           onClick={handleClick}
         >
           <h1 className="text-[20px]">الإزاله من السله</h1>{" "}
@@ -170,7 +177,7 @@ const PricingCart: React.FC<{
         </button>
       ) : (
         <button
-          className="w-[447px] h-[72px] rounded-[10px] bg-[#231104] text-white flex gap-[15px] justify-center items-center cursor-pointer cart-but duration-300"
+          className="w-[447px] h-[72px] rounded-[10px] bg-[#231104] text-white flex gap-[15px] justify-center items-center cursor-pointer cart-but duration-300 max-[500px]:w-14/20 relative right-1/2 translate-x-1/2"
           onClick={handleClick}
         >
           <h1 className="text-[20px]">اضف إلي السله</h1>{" "}

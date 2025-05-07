@@ -20,7 +20,7 @@ export default async function ProductPage({params}) {
   const imgUrl = product.imgUrl.replace("cut", "").replace("png", "jpg");
   return (
     <main className="">
-      <div className="w-full relative flex items-center justify-center gap-[90px] mt-[60px]">
+      <div className="w-full relative flex items-center justify-center gap-[90px] mt-[60px] px-[20px] max-[850px]:flex-col max-[850px]:gap-[40px] max-[850px]:text-center mb-[40px]">
         <div className="w-fit relative">
           <Image
             src={imgUrl}
@@ -56,21 +56,21 @@ export default async function ProductPage({params}) {
             </div>
           </div>
         </div>
-        <div dir="rtl">
-          <h1 className="text-[70px] font-extrabold text-[#231104] mb-[14px]">
+        <div dir="rtl" className="relative max-[500px]:flex max-[500px]:flex-col max-[500px]:items-center max-[500px]:justify-center">
+          <h1 className="text-[70px] font-extrabold text-[#231104] mb-[14px] max-[500px]:text-[55px]">
             {product.name}
           </h1>
           <p
             dir="rtl"
-            className="text-[20px] text-[rgba(35,17,4,.35)] w-[415px] text-justify p-shadow p-stroke"
+            className="text-[20px] text-[rgba(35,17,4,.35)] w-[415px] text-justify p-shadow p-stroke max-[850px]:text-center max-[500px]:text-[17px] max-[500px]:w-[320px]"
           >
             {" "}
             صحية وآمنة: مصنوعة من خشب طبيعي خالٍ من المواد الكيميائية، مثالية
             لتناول الطعام دون أي تفاعلات غير مرغوب فيها. أنيقة ومتينة: بتصميمها
             البسيط والمتين، تضيف لمسة دافئة وجميلة إلى أدوات مائدتك.
           </p>
-          <div className="flex justify-center items-center w-[160px] h-[58px] rounded-[8px] text-white text-[20px] bg-[#231104] top-[20px] relative">
-            <div className="w-[150px] h-[50px] border-white border-[.7px] border-dashed flex justify-center items-center relative rounded-[8px]">
+          <div className="flex justify-center items-center w-[160px] h-[58px] rounded-[8px] text-white text-[20px] bg-[#231104] top-[20px] relative max-[850px]:w-full max-[500px]:w-14/20">
+            <div className="w-[150px] h-[50px] border-white border-[.7px] border-dashed flex justify-center items-center relative rounded-[8px] max-[850px]:w-[98.5%]">
               الحجم
             </div>
           </div>

@@ -85,8 +85,10 @@ const Comments: React.FC<{
           </Button>
         </div>
       </Modal>
-      <div dir="rtl" className="relative">
-        <div className="flex items-center gap-[35px] relative right-[50px]">
+      <center>
+
+      <div dir="rtl" className="relative flex flex-col mb-[50px] items-center justify-center">
+        <div className="flex items-center gap-[35px] relative right-[50px] max-[500px]:right-0 max-[500px]:lef ">
           <Rating defaultValue={averageRate} readOnly dir="rtl" size="xl" />
           <h1 className="text-[32px]">التعليقات</h1>
           <p className="text-[30px]">
@@ -98,13 +100,14 @@ const Comments: React.FC<{
           </p>
         </div>
         <button
-          className="bg-[#ffa01c3a] w-[223px] h-[64px] rounded-[8px] text-[#a26b23d3] cursor-pointer duration-300 hover:bg-[#ffa01c83] relative right-[50px] top-[20px]"
+          className="bg-[#ffa01c3a] w-[223px] h-[64px] rounded-[8px] text-[#a26b23d3] cursor-pointer duration-300 hover:bg-[#ffa01c83] relative right-[50px] top-[20px] max-[500px]:w-15/20 max-[500px]:right-0"
           onClick={isAuthed ? open : () => redirect('/login')}
         >
           اترك تعليقاً
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-[20px] mt-[70px] w-[90%] left-1/2 relative translate-x-[-50%]" dir='rtl'>
+      </center>
+      <div className="grid grid-cols-2 gap-[20px] mt-[70px] w-[90%] left-1/2 relative translate-x-[-50%] max-[745px]:grid-cols-1" dir='rtl'>
         {comments.map((comment,idx) => <CommentContainer key={idx} comment={comment} />)}
       </div>
     </>

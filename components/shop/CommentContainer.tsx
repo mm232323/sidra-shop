@@ -15,8 +15,8 @@ const CommentContainer: React.FC<{ comment: CommentType }> = ({ comment }) => {
           <p className="text-[13px] opacity-60">{comment.date}</p>
         </div>
       </div>
-      <h1 className="font-normal text-[36px] text-[#231104]" dir='rtl'>{comment.title}</h1>
-      <p className="text-[19px] text-[#231104] opacity-85" dir='rtl'>{comment.comment}</p>
+      <h1 className="font-normal text-[36px] text-[#231104] max-[500px]:text-[30px]" dir='rtl'>{comment.title.slice(0,18)}</h1>
+      <p className="text-[19px] text-[#231104] opacity-85 max-[500px]:text-[17px]" dir='rtl'>{comment.comment.slice(0,50)}</p>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const ShopProductsManager: React.FC<{ products: ProductType[] }> = ({
         className="flex items-center gap-[15px] justify-center w-full relative mb-[50px] border-1 border-black/20 p-[25px] bg-[rgba(255,159,28,.1)]"
         dir="rtl"
       >
-        <div className="h-fit w-[45%] relative">
+        <div className="h-fit w-[45%] relative  max-[600px]:w-[70%]">
           <CiSearch
             className="absolute right-[30px] top-1/2 translate-y-[-50%] opacity-60"
             size={32}
@@ -51,7 +51,7 @@ const ShopProductsManager: React.FC<{ products: ProductType[] }> = ({
           />
         </div>
         <select
-          className="w-[18%] bg-white/65 border-1 border-[#45230A]/60 rounded-full pr-[20px] h-[75px] focus:outline-none duration-300"
+          className="w-[18%] bg-white/65 border-1 border-[#45230A]/60 rounded-full pr-[20px] h-[75px] focus:outline-none duration-300 max-[600px]:w-3/10"
           onChange={(event) => handleChangeType("type", event)}
         >
           <option className="rounded-[20px] text-[#231104] hover:bg-[#231104] hover:text-white">
@@ -88,7 +88,7 @@ const ShopProductsManager: React.FC<{ products: ProductType[] }> = ({
           </option>
         </select> */}
       </div>
-      <div className="grid grid-cols-3 gap-x-[150px] gap-y-[40px] relative w-fit h-fit left-1/2 translate-x-[-50%]">
+      <div className="grid grid-cols-3 gap-x-[150px] gap-y-[40px] relative w-18/20 h-fit left-1/2 translate-x-[-50%] max-[1160px]:gap-x-[90px] max-[1050px]:grid-cols-2 max-[700px]:flex max-[700px]:flex-col max-[700px]:items-center">
         <AnimatePresence>
           {products.length == 0 ? (
             <motion.p
@@ -105,6 +105,7 @@ const ShopProductsManager: React.FC<{ products: ProductType[] }> = ({
             </motion.p>
           ) : (
             <AnimatePresence mode="wait">
+
               {products.map((product: ProductType, idx: number) => (
                 <ProductContainer key={idx} product={product} />
               ))}
