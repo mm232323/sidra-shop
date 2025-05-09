@@ -7,11 +7,10 @@ import { motion } from "framer-motion";
 const IntroContainer: React.FC<{
   title: string;
   children: string;
-  backgroundUrl: string;
   imgUrl: string;
   id: number;
   HandleSelect: (id: number) => void;
-}> = ({ title, children, backgroundUrl, id, HandleSelect }) => {
+}> = ({ title, children,imgUrl, id, HandleSelect }) => {
   return (
     <motion.div
       className=" h-[802px] text-white flex  items-center w-full absolute top-0"
@@ -24,7 +23,7 @@ const IntroContainer: React.FC<{
       exit="hide"
     >
       <Image
-        src={backgroundUrl}
+        src={imgUrl}
         alt="Background Img"
         width={1441}
         height={802}

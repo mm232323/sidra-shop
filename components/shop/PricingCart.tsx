@@ -16,7 +16,7 @@ const PricingCart: React.FC<{
   const { handleCart } = useAppContext();
   const [selectedWeight, setSelectedWeight] = useState<0 | 1 | 2>(0);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [prodCount, setProdCount] = useState(1);
+  const [prodCount, setProdCount] = useState(0);
   const [prodCart, setProdCart] = useState(cart);
   useEffect(() => {
     setIsAddedToCart(
@@ -37,15 +37,11 @@ const PricingCart: React.FC<{
     setProdCount(+quant);
   }, [prodCart, product._id, product.weight, selectedWeight]);
 
-  const handleClick = () => {
+  const handleClick = (state: boolean) => {
     if (!isAuthed) {
       redirect("/signup");
     }
-    if (
-      prodCart.filter((prod) =>
-        prod.includes(`${product._id}&w=${product.weight[selectedWeight]}`)
-      ).length == 0
-    ) {
+    if (state) {
       handleCart("inc");
       setProdCount(1);
       SendToCart(true, product._id, userNumber, selectedWeight);
@@ -147,7 +143,7 @@ const PricingCart: React.FC<{
             initial="hide"
             animate="show"
             exit="hide"
-            className="w-[280px] h-[72px] relative max-[500px]:right-1/2 max-[500px]:translate-x-[50%] mb-[20px]"
+            className="w-[280px] h-[72px] relative right-1/2 translate-x-[50%] mb-[20px] flex gap-[12px]"
           >
             <button
               className="h-full w-[90px] rounded-[8px] bg-[rgba(162,111,75,.15)] flex justify-center items-center cursor-pointer border-[.3px] border-[#2311043b]"
@@ -170,7 +166,7 @@ const PricingCart: React.FC<{
       {isAddedToCart ? (
         <button
           className="w-[447px] h-[72px] rounded-[10px] bg-[#2311043b] flex gap-[15px] justify-center items-center cursor-pointer duration-300 max-[500px]:w-14/20 relative right-1/2 translate-x-1/2"
-          onClick={handleClick}
+          onClick={() => handleClick(false)}
         >
           <h1 className="text-[20px]">الإزاله من السله</h1>{" "}
           <TbShoppingCartMinus size={24} />{" "}
@@ -178,7 +174,7 @@ const PricingCart: React.FC<{
       ) : (
         <button
           className="w-[447px] h-[72px] rounded-[10px] bg-[#231104] text-white flex gap-[15px] justify-center items-center cursor-pointer cart-but duration-300 max-[500px]:w-14/20 relative right-1/2 translate-x-1/2"
-          onClick={handleClick}
+          onClick={() => handleClick(true)}
         >
           <h1 className="text-[20px]">اضف إلي السله</h1>{" "}
           <TbShoppingCartPlus color="white" size={24} />{" "}

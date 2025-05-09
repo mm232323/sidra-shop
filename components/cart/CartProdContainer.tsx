@@ -100,7 +100,7 @@ const CartProdContainer: React.FC<{ prodId: string; phone: string }> = ({
         </div>
       </Modal>
       <div
-        className="w-full h-fit flex items-center justify-around py-[30px] rounded-[20px] bg-[#fbab3c2a] border-1 border-black/35 cursor-pointer hover:drop-shadow-2xl duration-300 hover:bg-[#fbab3c57]"
+        className="w-full h-fit flex items-center justify-around max-[650px]:gap-[80px] max-[650px]:px-[20px] py-[30px] rounded-[20px] bg-[#fbab3c2a] border-1 border-black/35 cursor-pointer hover:drop-shadow-2xl duration-300 hover:bg-[#fbab3c57] max-[650px]:overflow-x-scroll"
         dir="rtl"
         onClick={open}
       >

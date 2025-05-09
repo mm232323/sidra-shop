@@ -20,7 +20,6 @@ const IntroManager: React.FC = () => {
               key={id}
               id={id}
               imgUrl={intro.imgUrl}
-              backgroundUrl={intro.backgroundImg}
               HandleSelect={handleSelect}
             >
               {intro.desc}

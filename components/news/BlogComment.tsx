@@ -29,10 +29,10 @@ const BlogComment: React.FC<{ comment: string,idx:number,isUserComment:boolean }
       className={`w-full h-[302px] rounded-[15px] border-[1px] border-[#2311049f] ${isUserComment ? 'bg-orange-100' : 'bg-white'} px-[15px]`}
     >
       <div className="flex w-full items-center justify-between mt-[20px]" dir='rtl'>
-        <h1 className="text-[18px] font-medium">{user?.name}</h1>
+        <h1 className="text-[18px] font-medium max-[450px]:text-[16px]">{user?.name.slice(0,16)}</h1>
         <h3 className="opacity-65">{date}</h3>
       </div>
-      <p className="text-end mt-[20px] opacity-90" dir='ltr' >{commentText}</p>
+      <p className="text-end mt-[20px] opacity-90 max-[450px]:text-[15px]" dir='ltr' >{commentText}</p>
     </motion.div>
   );
 };

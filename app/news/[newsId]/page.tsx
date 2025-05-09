@@ -33,18 +33,18 @@ export default async function BlogPage({params}) {
           alt="Blog Image"
           width={1330}
           height={707}
-          className="h-full min-h-full min-w-auto w-auto white-shadow"
+          className="h-full min-h-full min-w-[1330px] w-auto white-shadow"
         />
       </div>
       <div
-        className="w-18/20 flex justify-between items-center relative left-1/2 translate-x-[-50%]"
+        className="w-18/20 flex justify-between items-center relative left-1/2 translate-x-[-50%] max-[555px]:flex-col max-[555px]:mb-[20px]"
         dir="rtl"
       >
         <div className="flex flex-col items-start justify-start gap-[15px]">
-          <h1 className="text-[60px] font-bold text-[#231104]">{blog.title}</h1>
+          <h1 className="text-[60px] font-bold text-[#231104] max-[750px]:text-[45px] max-[400px]:text-[35px]">{blog.title}</h1>
           <p className="text-[20px] text-[#231104ab] mb-[15px]">{blog.text}</p>
         </div>
-        <h3 className="opacity-75 text-[20px]">{date}</h3>
+        <h3 className="opacity-75 text-[20px] min-[555px]:self-start">{date}</h3>
       </div>
         <BlogCommentsManager blogComments={blog.comments} blogId={blog._id} isAuthed={isAuthed} reactions={blog.reactions} phone={isAuthed ? session?.user?.email as string : ''} />
     </main>

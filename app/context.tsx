@@ -54,7 +54,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         handleCart,
         emptyCart,
         isAuthed,
-        messages: user ? user.messages : 0,
+        messages: user ? user.messages.length : 0,
       }}
     >
       {children}

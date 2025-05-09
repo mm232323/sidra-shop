@@ -27,10 +27,10 @@ const CartPage: React.FC = async () => {
   return (
     <main>
       <Title icon={<FaCartShopping size={25} />}>السله</Title>
-      <div className="w-[95%] flex gap-[20px] left-1/2 relative translate-x-[-50%]">
-        <div className="relative w-[66.9106881406%]">
+      <div className="w-[95%] flex gap-[20px] left-1/2 relative translate-x-[-50%] max-[1000px]:flex-col">
+        <div className="relative w-[66.9106881406%] max-[1000px]:w-full">
           <div
-            className="w-full h-[85px] bg-[rgba(202,140,23,.15)] border-[.5px] border-[rgba(0,0,0,.65)] rounded-[20px] flex justify-around items-center mb-[30px]"
+            className="w-full h-[85px] bg-[rgba(202,140,23,.15)] border-[.5px] border-[rgba(0,0,0,.65)] rounded-[20px] min-[480px]:justify-around flex items-center mb-[30px] max-[480px]:overflow-x-scroll max-[430px]:hidden"
             dir="rtl"
           >
             <Badge

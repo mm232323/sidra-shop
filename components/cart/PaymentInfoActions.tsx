@@ -21,7 +21,7 @@ const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,p
         <button className='border-none w-[400px] h-[50px] rounded-[15px] text-[30px] bg-green-100 cursor-pointer hover:bg-green-200 duration-300' onClick={handleSubmit}>نعم متأكد</button>
     </div>
   </Modal>
-  <div className="w-[29.5218295218%] h-[725px] bg-black/10 border-1 border-[#2311044f] flex flex-col gap-[20px] rounded-[36px] items-center justify-center py-[30px]">
+  <div className="w-[29.5218295218%] h-[725px] bg-black/10 border-1 border-[#2311044f] flex flex-col gap-[20px] rounded-[36px] items-center justify-center py-[30px] max-[1000px]:w-full">
           <h1 className="text-[36px] text-[#231104] font-bold mb-[15px]">
             الدفع
           </h1>

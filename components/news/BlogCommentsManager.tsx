@@ -59,7 +59,7 @@ const BlogCommentsManager: React.FC<{
     </Modal>
       <div>
         <div
-          className="flex items-center justify-start w-18/20 relative left-1/2 translate-x-[-50%] gap-[30px]"
+          className="flex items-center justify-start w-18/20 relative left-1/2 translate-x-[-50%] gap-[30px] flex-wrap"
           dir="rtl"
         >
           <div className="flex items-center justify-between gap-[10px]">
@@ -94,7 +94,7 @@ const BlogCommentsManager: React.FC<{
           <AnimatePresence>
             {comment && (
               <motion.button
-                className="w-[150px] h-[60px] rounded-[8px] bg-[#231104] text-white cursor-pointer"
+                className="w-[150px] h-[60px] rounded-[8px] bg-[#231104] text-white cursor-pointer max-[880px]:w-full"
                 variants={{
                   show: { opacity: 1, filter: "blur(0)", x: 0 },
                   hide: { opacity: 0, filter: "blur(8px)", x: -40 },
@@ -109,11 +109,11 @@ const BlogCommentsManager: React.FC<{
             )}
           </AnimatePresence>
         </div>
-        <h1 className="text-[40px] font-semibold text-end pr-[70px] mt-[30px]">
+        <h1 className="text-[40px] font-semibold text-end pr-[70px] mt-[30px] max-[880px]:text-center">
           التعليقات
         </h1>
         <div
-          className="grid grid-cols-3 w-18/20 gap-x-[20px] relative left-1/2 translate-x-[-50%] gap-y-[20px] mt-[50px]"
+          className="grid grid-cols-3 w-18/20 gap-x-[20px] relative left-1/2 translate-x-[-50%] gap-y-[20px] mt-[50px] max-[1000px]:grid-cols-2 max-[660px]:grid-cols-1"
           dir="rtl"
         >
           <AnimatePresence mode="wait">

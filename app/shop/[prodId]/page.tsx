@@ -11,7 +11,6 @@ import React from "react";
 export default async function ProductPage({params}) {
   const products: ProductType[] = await GetProducts();
   const product = products.find(prod => prod._id == params.prodId)
-  console.log(product)
   const session = await getServerSession();
   let user = null;
   if (session?.user) {

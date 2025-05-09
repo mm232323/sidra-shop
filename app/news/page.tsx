@@ -5,7 +5,7 @@ import NewsContainer from "@/components/news/NewsContainer";
 import { NewsType } from "@/util/types";
 import { GetNews } from "@/util/admin-apis";
 const NewsPage: React.FC = async () => {
-  const news = await GetNews()
+  const news = await GetNews();
   return (
     <main>
       <Title icon={<FaRegNewspaper color="#231104" size={40} />}>
@@ -18,10 +18,8 @@ const NewsPage: React.FC = async () => {
               لا يوجد منشورات جديده
             </p>
           ) : (
-            news.map((item: NewsType) => (
-              <NewsContainer key={item._id} news={item} />
-            ))
-          )}
+            news.map((item: NewsType) => <NewsContainer key={item._id} news={item} />)
+          )}          
         </div>
       </center>
     </main>

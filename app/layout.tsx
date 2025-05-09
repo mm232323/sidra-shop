@@ -24,6 +24,7 @@ import { getServerSession } from "next-auth";
 import { GetUser } from "@/util/auth-apis";
 import SessionProviders from "@/app/SessionProvider";
 import { AppProvider } from "./context";
+import { userData } from "@/util/types";
 
 const myColor: MantineColorsTuple = [
   "#fff6e1",
@@ -49,7 +50,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await getServerSession();
-  let user;
+  let user: null | userData;
   if (session?.user) {
     user = await GetUser(session.user?.email as string, true);
   }
