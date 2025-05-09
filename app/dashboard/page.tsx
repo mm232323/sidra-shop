@@ -9,7 +9,7 @@ import React from "react";
 import { MdMessage, MdShoppingCartCheckout } from "react-icons/md";
 const Dashboard: React.FC = async () => {
   const session = await getServerSession();
-  if (session.user == undefined) redirect("/login");
+  if (session?.user == undefined) redirect("/login");
   const user = session.user;
   const data: userData = await GetUser(user?.email as string, true);
   return (
