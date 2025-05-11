@@ -12,7 +12,7 @@ const NewsPage: React.FC = async () => {
         المنشورات
       </Title>
       <center>
-        <div className="grid grid-cols-2 gap-x-[20px] gap-y-[20px] w-[87%] relative top-[20px]">
+        <div className="grid grid-cols-2 gap-x-[20px] gap-y-[20px] w-[87%] relative top-[20px] max-[770px]:grid-cols-1">
           {!news.length ? (
             <p className="text-[20px] text-[rgba(0,0,0,.4)] relative left-1/2 w-fit">
               لا يوجد منشورات جديده
