@@ -67,6 +67,7 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
         alt="product container"
         width={303}
         height={502}
+        loading="eager"
         className="absolute w-full h-full z-[-5]"
       />
       <Link href={`/shop/${product._id.toString()}`}>
@@ -76,6 +77,7 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
             alt={product.name}
             width={967}
             height={971}
+            loading='eager'
             className="relative w-full h-full hover:opacity-0 hover:blur-lg duration-[400ms]"
           />
           <Image

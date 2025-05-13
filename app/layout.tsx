@@ -25,6 +25,7 @@ import { GetUser } from "@/util/auth-apis";
 import SessionProviders from "@/app/SessionProvider";
 import { AppProvider } from "./context";
 import { userData } from "@/util/types";
+import { domAnimation, LazyMotion } from "framer-motion";
 
 const myColor: MantineColorsTuple = [
   "#fff6e1",
@@ -57,6 +58,7 @@ export default async function RootLayout({
   return (
     <html lang="en" {...mantineHtmlProps}>
       <body className={`${baloo.className} antialiased`}>
+      <LazyMotion features={domAnimation}>
         <SessionProviders>
           <AppProvider>
             <MantineProvider theme={theme}>
@@ -67,6 +69,7 @@ export default async function RootLayout({
             </MantineProvider>
           </AppProvider>
         </SessionProviders>
+    </LazyMotion>
       </body>
     </html>
   );

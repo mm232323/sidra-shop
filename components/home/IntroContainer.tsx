@@ -27,6 +27,7 @@ const IntroContainer: React.FC<{
         alt="Background Img"
         width={1441}
         height={802}
+        loading="eager"
         className="absolute z-[-100] top-0 h-[747px] w-[1445px] max-w-[1445px] right-[-20px] "
       />
       <Flex align="center" justify="space-around" className="gap-[200px]">
