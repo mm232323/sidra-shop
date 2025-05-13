@@ -42,7 +42,7 @@ const IntroContainer: React.FC<{
           <p className="text-[24px] font-normal opacity-80 w-[522px] max-[650px]:text-center max-[550px]:text-[18px] max-[550px]:w-[300px]">
             {children}
           </p>
-          <Button href='/shop'>تسوق الأن</Button>
+          <Button href='/shop'>تسوق الآن</Button>
           <Cursor idx={id} onHandleSelect={HandleSelect} />
         </Flex>
       </Flex>
