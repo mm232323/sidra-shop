@@ -92,9 +92,8 @@ const ProductContainer: React.FC<{ product: ProductType }> = ({ product }) => {
       <h1 className="text-white text-[30px] font-bold text-center mt-[15px] mb-[10px]">
         {product.name}
       </h1>
-      <h3 dir="rtl" className="text-[27px] text-[#FED780]">
-        <span> ج.م </span>
-        {product.price[0]}
+      <h3 dir="rtl" className="text-[20px] text-[#FED780]">
+        انقر هنا لعرض المنتج
       </h3>
       {user && (
         <div className="relative flex gap-[20px] top-[25px]">

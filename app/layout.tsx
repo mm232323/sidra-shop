@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Baloo_Bhaijaan_2 } from "next/font/google";
+// import {DefaultSeo} from 'next-seo'
 import "./globals.css";
 import "@mantine/core/styles.css";
 import CanvasCursor from "@/components/CanvasCursor";
