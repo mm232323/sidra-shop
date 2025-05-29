@@ -11,7 +11,7 @@ const LoginPage:React.FC = async () => {
   <Login />
   </div>
   <div className="relative overflow-hidden w-full h-full min-w-full flex justify-center items-center">
-    <div className="w-full h-full absolute bg-white/10 backdrop-blur-2xl" />
+    <div className="w-full h-full absolute bg-white/10 backdrop-blur-xl" />
     <Image
       src="/auth/auth-bg-img.jpg"
       alt="Signup Page Background"
