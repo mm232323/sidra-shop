@@ -24,7 +24,7 @@ const SignupPage: React.FC = async () => {
           alt="Signup Page Background"
           width={2000}
           height={2000}
-          className="relative z-[-2] min-h-[2000px] min-w-[1443px]"
+          className="relative z-[-2] min-h-[2000px]"
         />
       </div>
     </main>
