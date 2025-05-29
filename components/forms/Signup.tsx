@@ -38,6 +38,7 @@ const Signup: React.FC = () => {
           maxLength={11}
           minLength={11}
           className="max-[600px]:w-19/20"
+          inputMode='numeric'
         />
         <PasswordInput
           error={

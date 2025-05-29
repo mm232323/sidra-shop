@@ -22,7 +22,7 @@ const Login: React.FC = () => {
     }
     const timer = setTimeout(() => {
       if ((state as string[]).includes("done")) {
-        redirect('/dashboard')
+        redirect("/dashboard");
       }
     }, 1000);
     return () => clearTimeout(timer);
@@ -53,6 +53,7 @@ const Login: React.FC = () => {
           radius="md"
           placeholder="رقم الهاتف"
           defaultValue={0}
+          inputMode="numeric"
           className="max-[600px]:w-19/20"
         />
         <PasswordInput
