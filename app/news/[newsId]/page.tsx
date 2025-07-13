@@ -6,14 +6,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-interface BlogPageProps {
-  params: Promise<{
-    newsId: string;
-  }>;
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }) {
   const resolvedParams = await params;
   const session = await getServerSession();
   const isAuthed = session?.user !== undefined;

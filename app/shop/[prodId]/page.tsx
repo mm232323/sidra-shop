@@ -6,14 +6,8 @@ import { ProductType, userData } from "@/util/types";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import React from "react";
-interface ProductPageProps {
-  params: Promise<{
-    prodId: string;
-  }>;
-  searchParams: { [key: string]: string | string[] | undefined };
-}
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }) {
   const resolvedParams = await params;
   const products: ProductType[] = await GetProducts();
   const product = products.find(prod => prod._id == resolvedParams.prodId);
