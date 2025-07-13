@@ -4,6 +4,34 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import NewsContainer from "@/components/news/NewsContainer";
 import { NewsType } from "@/util/types";
 import { GetNews } from "@/util/admin-apis";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO/SEOHead";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Honey News & Articles",
+  description: "Stay updated with the latest news, articles, and insights about honey, its health benefits, and sustainable beekeeping practices. Discover tips and information about natural honey products.",
+  keywords: [
+    "honey news",
+    "honey articles",
+    "honey benefits",
+    "beekeeping",
+    "natural honey",
+    "honey health",
+    "honey tips",
+    "honey information",
+    "honey blog",
+    "honey insights",
+    "أخبار العسل",
+    "مقالات العسل",
+    "فوائد العسل",
+    "تربية النحل",
+    "عسل طبيعي",
+    "صحة العسل"
+  ],
+  url: "/news",
+  type: "website",
+});
+
 const NewsPage: React.FC = async () => {
   const news = await GetNews();
   return (

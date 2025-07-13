@@ -6,12 +6,19 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+interface BlogPageProps {
+  params: Promise<{
+    newsId: string;
+  }>;
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-export default async function BlogPage({params}) {
+export default async function BlogPage({ params }: BlogPageProps) {
+  const resolvedParams = await params;
   const session = await getServerSession();
   const isAuthed = session?.user !== undefined;
   const news = await GetNews();
-  const blog = news.find((item: NewsType) => item._id === params.newsId);
+  const blog = news.find((item: NewsType) => item._id === resolvedParams.newsId);
   
   if (!blog) {
     return notFound();
@@ -30,10 +37,11 @@ export default async function BlogPage({params}) {
         />
         <Image
           src={blog.imgUrl}
-          alt="Blog Image"
+          alt={`${blog.title} - Blog Image`}
           width={1330}
           height={707}
           className="h-full min-h-full min-w-[1330px] w-auto white-shadow"
+          priority
         />
       </div>
       <div

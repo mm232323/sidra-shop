@@ -2,6 +2,33 @@ import Feature from "@/components/home/Feature";
 import InternalLink from "@/components/home/InternalLink";
 import IntroManager from "@/components/home/IntroManager";
 import { Grid } from "@mantine/core";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO/SEOHead";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Premium Natural Honey Products",
+  description: "Discover premium natural honey products from Sidra Honey Shop. Fresh, pure, and sustainably sourced honey with exceptional health benefits. Free delivery across the city with diverse payment options.",
+  keywords: [
+    "premium honey",
+    "natural honey products",
+    "organic honey",
+    "pure honey",
+    "health benefits",
+    "sustainable honey",
+    "local honey",
+    "honey delivery",
+    "fresh honey",
+    "honey shop",
+    "عسل طبيعي",
+    "عسل صافي",
+    "منتجات العسل",
+    "فوائد العسل الصحية",
+    "توصيل العسل"
+  ],
+  url: "/",
+  type: "website",
+});
+
 export default function Home() {
   return (
     <main className="text-[#231104] selection:text-white selection:bg-amber-800">

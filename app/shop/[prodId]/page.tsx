@@ -6,33 +6,53 @@ import { ProductType, userData } from "@/util/types";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import React from "react";
+interface ProductPageProps {
+  params: Promise<{
+    prodId: string;
+  }>;
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-
-export default async function ProductPage({params}) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  const resolvedParams = await params;
   const products: ProductType[] = await GetProducts();
-  const product = products.find(prod => prod._id == params.prodId)
+  const product = products.find(prod => prod._id == resolvedParams.prodId);
+  
+  if (!product) {
+    return (
+      <main className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-[#231104] mb-4">Product Not Found</h1>
+          <p className="text-[rgba(35,17,4,.6)]">The requested product could not be found.</p>
+        </div>
+      </main>
+    );
+  }
+
   const session = await getServerSession();
   let user = null;
   if (session?.user) {
     user = (await GetUser(session?.user?.email as string, true)) as userData;
   }
   const imgUrl = product.imgUrl.replace("cut", "").replace("png", "jpg");
+  
   return (
     <main className="">
       <div className="w-full relative flex items-center justify-center gap-[90px] mt-[60px] px-[20px] max-[850px]:flex-col max-[850px]:gap-[40px] max-[850px]:text-center mb-[40px]">
         <div className="w-fit relative">
           <Image
             src={imgUrl}
-            alt="Product Image"
+            alt={`${product.name} - Premium Natural Honey`}
             width={612}
             height={749}
             className="rounded-[32px] product-shadow mb-[20px]"
+            priority
           />
           <div className="flex items-center gap-[25px] justify-center">
             <div className="shadow-xl rounded-full relative overflow-hidden">
               <Image
                 src={product.imgUrl}
-                alt="Hexagonal product image"
+                alt={`${product.name} - Hexagonal product image`}
                 width={90}
                 height={90}
               />
@@ -40,7 +60,7 @@ export default async function ProductPage({params}) {
             <div className="shadow-xl rounded-full relative overflow-hidden">
               <Image
                 src={product.imgUrl}
-                alt="Hexagonal product image"
+                alt={`${product.name} - Hexagonal product image`}
                 width={90}
                 height={90}
               />
@@ -48,7 +68,7 @@ export default async function ProductPage({params}) {
             <div className="shadow-xl rounded-full relative overflow-hidden">
               <Image
                 src={product.imgUrl}
-                alt="Hexagonal product image"
+                alt={`${product.name} - Hexagonal product image`}
                 width={90}
                 height={90}
               />
@@ -83,7 +103,7 @@ export default async function ProductPage({params}) {
       </div>
       <Comments
         prodComments={product.comments}
-        prodId={params.prodId}
+        prodId={resolvedParams.prodId}
         username={user?.name}
       />
     </main>
