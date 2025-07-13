@@ -2,13 +2,21 @@
 import { login } from "@/actions/auth-actions";
 import { Flex, PasswordInput, TextInput } from "@mantine/core";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { SignupFormData } from "@/util/types";
 import { redirect } from "next/navigation";
+import { Formik } from "formik";
+// import * as Yup from 'yup';
+ 
+// const SignupSchema = Yup.object().shape({
+//   phone: Yup.string().length(11,"رقم الهاتف يحتوي علي 11 رقم"),
+//   password: Yup.string().required('يجب ادخال كلمة السر'),
+// });
 const Login: React.FC = () => {
   const [state, action] = React.useActionState(login, []);
   const { data: session } = useSession();
+  const [values,setValues] = useState<{password:string,phone:string}>({phone:"",password:''})
   if (session?.user !== undefined) redirect("/dashboard");
 
   useEffect(() => {
@@ -42,42 +50,51 @@ const Login: React.FC = () => {
         سجل دخولك إلى حسابك على &quot;سدرة&quot; واستمتع بتجربة تسوق سلسة مع
         أفضل العروض على منتجات الأعسال الطبيعية!
       </p>
-      <form
-        className="flex flex-col gap-4 justify-center max-[600px]:items-center max-[600px]:w-full"
-        action={action}
+      <Formik initialValues={{
+        phone: values.phone,
+        password: values.password,
+      }}
+      onSubmit={async (values) => {
+        setValues({phone:values.phone,password:values.password})
+      }}
       >
-        <TextInput
-          error={(state as string[])?.includes("phone")}
-          name="phone"
-          size="lg"
-          radius="md"
-          placeholder="رقم الهاتف"
-          defaultValue={0}
-          inputMode="numeric"
-          className="max-[600px]:w-19/20"
-        />
-        <PasswordInput
-          error={
-            (state as string[])?.includes("password")
-              ? "البيانات المدخله خاطئه"
-              : ""
-          }
-          name="password"
-          size="lg"
-          radius="md"
-          placeholder="كلمة المرور"
-          className="max-[600px]:w-19/20"
-        />
-        <button className="w-full rounded-[15px] bg-[#FF9500] h-[55px] cursor-pointer hover:bg-[#ff9500ce] duration-300 border-[rgba(35,17,4,39%)] border-[.5px] max-[600px]:w-19/20">
-          تسجيل دخول
-        </button>
-        <h3>
-          ليس لديك حساب؟{" "}
-          <Link href="/signup">
-            <span className="text-cyan-600">إنشئ حساب جديد</span>
-          </Link>
-        </h3>
-      </form>
+        <form
+          className="flex flex-col gap-4 justify-center max-[600px]:items-center max-[600px]:w-full"
+          action={action}
+        >
+          <TextInput
+            error={(state as string[])?.includes("phone")}
+            name="phone"
+            size="lg"
+            radius="md"
+            defaultValue=""
+            placeholder="رقم الهاتف"
+            inputMode="numeric"
+            className="max-[600px]:w-19/20"
+          />
+          <PasswordInput
+            error={
+              (state as string[])?.includes("password")
+                ? "البيانات المدخله خاطئه"
+                : ""
+            }
+            name="password"
+            size="lg"
+            radius="md"
+            placeholder="كلمة المرور"
+            className="max-[600px]:w-19/20"
+          />
+          <button className="w-full rounded-[15px] bg-[#FF9500] h-[55px] cursor-pointer hover:bg-[#ff9500ce] duration-300 border-[rgba(35,17,4,39%)] border-[.5px] max-[600px]:w-19/20">
+            تسجيل دخول
+          </button>
+          <h3>
+            ليس لديك حساب؟{" "}
+            <Link href="/signup">
+              <span className="text-cyan-600">إنشئ حساب جديد</span>
+            </Link>
+          </h3>
+        </form>
+      </Formik>
     </Flex>
   );
 };
