@@ -40,7 +40,7 @@ const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,p
           >
             <h1>سعر التوصيل</h1>
             <h1>
-              <NumberFormatter prefix={" ج.م "} value={100} />
+              <NumberFormatter prefix={" ج.م "} value={60} />
             </h1>
           </div>
           <div
@@ -49,7 +49,7 @@ const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,p
           >
             <h1>السعر الإجمالي</h1>
             <h1>
-              <NumberFormatter prefix={" ج.م "} value={prodsSum + 100} />
+              <NumberFormatter prefix={" ج.م "} value={prodsSum + 60} />
             </h1>
           </div>
           { prodsSum > 0 &&
