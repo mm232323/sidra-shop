@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
             className="w-[30px] h-[30px] hover:opacity-70 duration-300 cursor-pointer"
           />
         </Link>
-        <Link href="https://www.instagram.com/sidra_honey1?igsh=ZjNwNWMzeHhvczJp&utm_source=qr">
+        <Link href="https://www.tiktok.com/@sidra_honey?_t=8s1Jwxipw1c&_r=1">
           <FaTiktok
             size={30}
             color='#231104'
