@@ -1,9 +1,14 @@
+import { Metadata } from "next";
 import Title from "@/components/layout/Title";
 import ShopProductsManager from "@/components/shop/ShopProductsManager";
 import { GetProducts } from "@/util/admin-apis";
 import React from "react";
 
-const ShopPage: React.FC = async () => {
+export const metadata: Metadata = {
+  title: "المتجر - Sidra Shop"
+};
+
+export default async function Shop() {
   const products = await GetProducts();
   return (
     <main>
@@ -12,5 +17,3 @@ const ShopPage: React.FC = async () => {
     </main>
   );
 };
-
-export default ShopPage;

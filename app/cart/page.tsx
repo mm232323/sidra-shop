@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import CartProdContainer from "@/components/cart/CartProdContainer";
 import PaymentInfoActions from "@/components/cart/PaymentInfoActions";
 import Title from "@/components/layout/Title";
@@ -9,6 +10,11 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { FaCartShopping } from "react-icons/fa6";
+
+export const metadata: Metadata = {
+  title: "سلة التسوق - Sidra Shop"
+};
+
 const CartPage: React.FC = async () => {
   const session = await getServerSession();
   if (!session?.user) redirect("/login");

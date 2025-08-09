@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import EditableInfo from "@/components/dashboard/EditableInfo";
 import { GetUser } from "@/util/auth-apis";
 import { userData } from "@/util/types";
@@ -7,6 +8,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import { MdMessage, MdShoppingCartCheckout } from "react-icons/md";
+
+export const metadata: Metadata = {
+  title: "لوحة التحكم - Sidra Shop"
+};
+
 const Dashboard: React.FC = async () => {
   const session = await getServerSession();
   if (session?.user == undefined) redirect("/login");

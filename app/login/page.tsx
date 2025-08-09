@@ -1,6 +1,11 @@
+import { Metadata } from "next";
 import Login from "@/components/forms/Login";
 import Image from "next/image";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "تسجيل الدخول - Sidra Shop"
+};
 
 const LoginPage: React.FC = async () => {
   return (

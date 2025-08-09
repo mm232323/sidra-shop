@@ -1,5 +1,26 @@
 import { useEffect } from 'react';
 const useCanvasCursor = () => {
+  // Declare all variables at the top to avoid undefined references
+  var ctx,
+    f,
+    pos = {},
+    lines = [],
+    E = {
+      debug: true,
+      friction: 0.5,
+      trails: 20,
+      size: 50,
+      dampening: 0.25,
+      tension: 0.98,
+    };
+    
+  function Node() {
+    this.x = 0;
+    this.y = 0;
+    this.vy = 0;
+    this.vx = 0;
+  }
+  
   function n(e) {
     this.init(e || {});
   }
@@ -13,11 +34,11 @@ const useCanvasCursor = () => {
     update: function () {
       return (
         (this.phase += this.frequency),
-        (e = this.offset + Math.sin(this.phase) * this.amplitude)
+        (this.offset + Math.sin(this.phase) * this.amplitude)
       );
     },
     value: function () {
-      return e;
+      return this.offset + Math.sin(this.phase) * this.amplitude;
     },
   };
   function Line(e) {
@@ -101,7 +122,7 @@ const useCanvasCursor = () => {
       render();
   }
   function render() {
-    if (ctx.running) {
+    if (ctx && ctx.running) {
       ctx.globalCompositeOperation = 'source-over';
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       ctx.globalCompositeOperation = 'lighter';
@@ -116,30 +137,18 @@ const useCanvasCursor = () => {
     }
   }
   function resizeCanvas() {
-    ctx.canvas.width = window.innerWidth - 20;
-    ctx.canvas.height = window.innerHeight;
-  }
-  var ctx,
-    f,
-    e = 0,
-    pos = {},
-    lines = [],
-    E = {
-      debug: true,
-      friction: 0.5,
-      trails: 20,
-      size: 50,
-      dampening: 0.25,
-      tension: 0.98,
-    };
-  function Node() {
-    this.x = 0;
-    this.y = 0;
-    this.vy = 0;
-    this.vx = 0;
+    if (ctx && ctx.canvas) {
+      ctx.canvas.width = window.innerWidth - 20;
+      ctx.canvas.height = window.innerHeight;
+    }
   }
   const renderCanvas = function () {
-    ctx = document.getElementById('canvas').getContext('2d');
+    const canvas = document.getElementById('canvas');
+    if (!canvas) return;
+    
+    ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
     ctx.running = true;
     ctx.frame = 1;
     f = new n({
@@ -153,32 +162,38 @@ const useCanvasCursor = () => {
     document.body.addEventListener('orientationchange', resizeCanvas);
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('focus', () => {
-      if (!ctx.running) {
+      if (ctx && !ctx.running) {
         ctx.running = true;
         render();
       }
     });
     window.addEventListener('blur', () => {
-      ctx.running = true;
+      if (ctx) {
+        ctx.running = true;
+      }
     });
     resizeCanvas();
   };
   useEffect(() => {
     renderCanvas();
     return () => {
-      ctx.running = false;
+      if (ctx) {
+        ctx.running = false;
+      }
       document.removeEventListener('mousemove', onMousemove);
       document.removeEventListener('touchstart', onMousemove);
       document.body.removeEventListener('orientationchange', resizeCanvas);
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('focus', () => {
-        if (!ctx.running) {
+        if (ctx && !ctx.running) {
           ctx.running = true;
           render();
         }
       });
       window.removeEventListener('blur', () => {
-        ctx.running = true;
+        if (ctx) {
+          ctx.running = true;
+        }
       });
     };
   }, []);

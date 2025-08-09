@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import React from "react";
 import Title from "@/components/layout/Title";
 import { FaRegNewspaper } from "react-icons/fa6";
@@ -5,7 +6,11 @@ import NewsContainer from "@/components/news/NewsContainer";
 import { NewsType } from "@/util/types";
 import { GetNews } from "@/util/admin-apis";
 
-const NewsPage: React.FC = async () => {
+export const metadata: Metadata = {
+  title: "المنشورات - Sidra Shop"
+};
+
+export default async function News() {
   const news = await GetNews();
   return (
     <main>
@@ -23,6 +28,4 @@ const NewsPage: React.FC = async () => {
       </center>
     </main>
   );
-};
-
-export default NewsPage;
+}

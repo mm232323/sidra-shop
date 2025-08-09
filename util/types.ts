@@ -24,7 +24,8 @@ export interface ProductType {
     type:string,
     imgUrl:string,
     designUrl:string,
-    comments:CommentType[]
+    comments:CommentType[],
+    mainImgs:string[]
 }
 
 export interface CommentType {

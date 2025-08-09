@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Title from "@/components/layout/Title";
 import { getMessages } from "@/util/user-apis";
 import { Alert } from "@mantine/core";
@@ -8,6 +9,11 @@ import { GrStatusGood } from "react-icons/gr";
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "الرسائل - Sidra Shop",
+};
+
 const MessagesPage: React.FC = async () => {
   const session = await getServerSession();
   if (!session?.user) redirect("/login");

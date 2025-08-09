@@ -1,8 +1,13 @@
+import { Metadata } from "next";
 import Signup from "@/components/forms/Signup";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "إنشاء حساب - Sidra Shop"
+};
 
 const SignupPage: React.FC = async () => {
   const session = await getServerSession();

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import BlogCommentsManager from "@/components/news/BlogCommentsManager";
 import { GetNews } from "@/util/admin-apis";
 import { NewsType } from "@/util/types";
@@ -5,6 +6,16 @@ import { format } from "date-fns";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const news = await GetNews();
+  const blog = news.find((item: NewsType) => item._id === resolvedParams.newsId);
+  
+  return {
+    title: blog ? `${blog.title} - Sidra Shop` : "المنشور - Sidra Shop",
+  };
+}
 
 export default async function BlogPage({ params }) {
   const resolvedParams = await params;

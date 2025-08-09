@@ -42,6 +42,7 @@ const theme = createTheme({
     myColor,
   },
 });
+
 export default async function RootLayout({
   children,
 }: Readonly<{

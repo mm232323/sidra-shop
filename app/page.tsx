@@ -2,6 +2,11 @@ import Feature from "@/components/home/Feature";
 import InternalLink from "@/components/home/InternalLink";
 import IntroManager from "@/components/home/IntroManager";
 import { Grid } from "@mantine/core";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "الصفحة الرئيسية - Sidra Shop",
+};
 
 export default function Home() {
   return (
