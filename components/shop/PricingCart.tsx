@@ -12,7 +12,8 @@ const PricingCart: React.FC<{
   cart: string[];
   isAuthed: boolean;
   userNumber: string;
-}> = ({ product, cart, userNumber, isAuthed }) => {
+  onHandleSelectWeight: (weight: 0 | 1 | 2) => void;
+}> = ({ product, cart, userNumber, isAuthed, onHandleSelectWeight }) => {
   const { handleCart } = useAppContext();
   const [selectedWeight, setSelectedWeight] = useState<0 | 1 | 2>(0);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -27,7 +28,10 @@ const PricingCart: React.FC<{
         : false
     );
   }, [isAuthed, product, selectedWeight, prodCart]);
-
+  const selectWeightHandler = (weight: 0 | 1 | 2) => {
+    setSelectedWeight(weight);
+    onHandleSelectWeight(weight);
+  };
   useEffect(() => {
     const selectedProd: string[] | string = prodCart.filter((prod) =>
       prod.includes(`${product._id}&w=${product.weight[selectedWeight]}`)
@@ -89,7 +93,7 @@ const PricingCart: React.FC<{
               ? "bg-[#231104] text-white"
               : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
           }`}
-          onClick={() => setSelectedWeight(0)}
+          onClick={() => selectWeightHandler(0)}
         >
           {+product.weight[0] == 1000 ? "1 كيلو" : `${product.weight[0]} جرام`}
         </div>
@@ -100,7 +104,7 @@ const PricingCart: React.FC<{
                 ? "bg-[#231104] text-white"
                 : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
             }`}
-            onClick={() => setSelectedWeight(1)}
+            onClick={() => selectWeightHandler(1)}
           >
             {product.weight[1]} جرام
           </div>
@@ -112,7 +116,7 @@ const PricingCart: React.FC<{
                 ? "bg-[#231104] text-white"
                 : "text-[rgba(35,17,4,.53)] bg-[rgba(0,0,0,.17)]"
             }`}
-            onClick={() => setSelectedWeight(2)}
+            onClick={() => selectWeightHandler(2)}
           >
             {product.weight[2]} جرام
           </div>

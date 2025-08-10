@@ -12,7 +12,9 @@ const ProductPageContent: React.FC<{
 }> = ({ product, user, resolvedParams }) => {
   const [selectedImg, setSelectedImg] = useState(0);
   const selectedImgUrl = `/shop/${product.mainImgs[selectedImg]}.jpeg`;
-
+  const handleImgSelectedImg = (idx: 0 | 1 | 2) => {
+    setSelectedImg(idx)
+  }
   if (!product) {
     return (
       <main className="flex items-center justify-center min-h-screen">
@@ -94,6 +96,7 @@ const ProductPageContent: React.FC<{
             userNumber={user !== null ? user.phone : ""}
             isAuthed={user !== null}
             cart={user !== null ? user.cart : []}
+            onHandleSelectWeight={(i: 0 | 1 | 2) => handleImgSelectedImg(i)}
           />
         </div>
       </div>
