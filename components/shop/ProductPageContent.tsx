@@ -49,8 +49,8 @@ const ProductPageContent: React.FC<{
                   <div
                     className={`shadow-xl rounded-[20px] flex justify-center items-center relative overflow-hidden w-[90px] h-[90px] duration-300 cursor-pointer rotate-45 ${
                       selectedImg === i
-                        ? "cursor-default grayscale-100 scale-90"
-                        : "cursor-pointer hover:scale-105"
+                        ? "cursor-default  scale-90"
+                        : "cursor-pointer grayscale-100 hover:scale-105"
                     }`}
                     key={`${img}-${i}`}
                     onClick={() => setSelectedImg(i)}
