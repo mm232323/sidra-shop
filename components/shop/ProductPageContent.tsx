@@ -82,9 +82,7 @@ const ProductPageContent: React.FC<{
             className="text-[20px] text-[rgba(35,17,4,.35)] w-[415px] text-justify p-shadow p-stroke max-[850px]:text-center max-[500px]:text-[17px] max-[500px]:w-[320px]"
           >
             {" "}
-            صحية وآمنة: مصنوعة من خشب طبيعي خالٍ من المواد الكيميائية، مثالية
-            لتناول الطعام دون أي تفاعلات غير مرغوب فيها. أنيقة ومتينة: بتصميمها
-            البسيط والمتين، تضيف لمسة دافئة وجميلة إلى أدوات مائدتك.
+            {product.desc}
           </p>
           <div className="flex justify-center items-center w-[160px] h-[58px] rounded-[8px] text-white text-[20px] bg-[#231104] top-[20px] relative max-[850px]:w-full max-[500px]:w-14/20">
             <div className="w-[150px] h-[50px] border-white border-[.7px] border-dashed flex justify-center items-center relative rounded-[8px] max-[850px]:w-[98.5%]">
