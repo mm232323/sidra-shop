@@ -9,7 +9,6 @@ const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,p
     const [opened, { open, close }] = useDisclosure(false);
   const handleSubmit = () => {
     SubmitOrder(phone)
-    close()
     redirect('/dashboard')
   }
   return <>
@@ -53,7 +52,7 @@ const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,p
             </h1>
           </div>
           { prodsSum > 0 &&
-          <button className="border-none w-9/12 h-[85px] bg-amber-500 text-stone-900 rounded-[15px] text-[30px] product-shadow cursor-pointer hover:bg-[#45230A] hover:text-white duration-300" onClick={open}>
+          <button className="border-none w-9/12 h-[85px] bg-amber-500 text-stone-900 rounded-[15px] text-[30px] product-shadow cursor-pointer hover:bg-[#45230A] hover:text-white duration-300" onClick={handleSubmit}>
             طلب الان
           </button>
           }
