@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 
 const PaymentInfoActions:React.FC<{prodsSum:number,phone:string}> = ({prodsSum,phone}) => {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { close }] = useDisclosure(false);
   const handleSubmit = () => {
     SubmitOrder(phone)
     redirect('/dashboard')
